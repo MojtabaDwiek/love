@@ -1,0 +1,166 @@
+/* General Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Great Vibes', cursive; /* Love-themed font */
+    background-color: #000000;
+    color: white;
+    overflow: hidden;
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Align content to the top */
+    height: 100vh;
+  }
+  
+  /* Counter Section */
+  .counter {
+    text-align: center;
+    margin-top: 20px; /* Add some space at the top */
+    margin-bottom: 20px;
+  }
+  
+  .counter h1 {
+    font-family: 'Great Vibes', cursive; /* Love-themed font */
+    font-size: 3rem; /* Adjust size as needed */
+    margin-bottom: 10px;
+  }
+  
+  #time-together span {
+    font-family: 'Great Vibes', cursive; /* Love-themed font */
+    font-size: 2rem;
+    margin: 0 5px;
+  }
+  
+  /* Scene Styles */
+  .scene {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; /* Full screen height */
+    overflow: hidden;
+  }
+  
+  /* Rain Container */
+  .rain {
+    position: absolute;
+    top: 0;
+    left: 0; /* Rain covers the entire screen */
+    width: 100%; /* Full screen width */
+    height: 100%;
+    z-index: 1;
+    overflow: hidden;
+  }
+  
+  /* Raindrop Styles */
+  .rain-drop {
+    position: absolute;
+    top: -50px;
+    width: 2px; /* Narrow raindrop */
+    height: 20px; /* Shorter raindrop */
+    background: linear-gradient(transparent, rgba(173, 216, 230, 0.8)); /* Light blue gradient */
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; /* Teardrop shape */
+    animation: drop 3s linear infinite; /* Slow down the rain */
+    transform-origin: bottom; /* Rotate from the bottom */
+  }
+  
+  @keyframes drop {
+    0% {
+      transform: translateY(-50px) rotate(15deg); /* Slight rotation */
+    }
+    100% {
+      transform: translateY(100vh) rotate(0deg); /* Straighten as it falls */
+    }
+  }
+  
+  /* Splash Effect */
+  .rain-splash {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: rgba(173, 216, 230, 0.5); /* Light blue splash */
+    border-radius: 50%;
+    animation: splash 0.5s ease-out forwards;
+  }
+  
+  @keyframes splash {
+    0% {
+      transform: scale(0);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(2);
+      opacity: 0;
+    }
+  }
+  
+  /* Umbrella Couple Image */
+  .umbrella-couple {
+    position: absolute;
+    bottom: 100px; /* Adjust as needed */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    flex-direction: column; /* Stack text and image vertically on mobile */
+    align-items: center;
+    gap: 10px; /* Space between text and image */
+  }
+  
+  .umbrella-couple img {
+    width: 150px; /* Smaller image for mobile */
+    height: auto;
+    display: block; /* Ensure the image is displayed */
+    border-radius: 20%; /* Slightly rounded corners */
+    opacity: 0.6;
+  }
+  
+  /* Left and Right Text Styles */
+  .text-left,
+  .text-right {
+    position: relative;
+    font-family: 'Great Vibes', cursive; /* Love-themed font */
+    font-size: 1.5rem; /* Smaller font size for mobile */
+    color: white;
+    text-align: center; /* Center text on mobile */
+  }
+  
+  /* Glow Effect for Specific Words */
+  .dark-blue {
+    color: #00008B; /* Dark blue for "Rains" */
+    text-shadow: 0 0 10px #00008B, 0 0 20px #00008B, 0 0 30px #00008B; /* Glow effect */
+  }
+  
+  .dark-red {
+    color: #8B0000; /* Dark red for "Umbrella" */
+    text-shadow: 0 0 10px #8B0000, 0 0 20px #8B0000, 0 0 30px #8B0000; /* Glow effect */
+  }
+  
+  /* Media Queries for Mobile Responsiveness */
+  @media (max-width: 768px) {
+    .counter h1 {
+      font-size: 2rem; /* Smaller font size for mobile */
+    }
+  
+    #time-together span {
+      font-size: 1.5rem; /* Smaller font size for mobile */
+    }
+  
+    .umbrella-couple {
+      flex-direction: column; /* Stack text and image vertically */
+      gap: 5px; /* Reduce gap for mobile */
+    }
+  
+    .umbrella-couple img {
+      width: 120px; /* Smaller image for mobile */
+    }
+  
+    .text-left,
+    .text-right {
+      font-size: 1.2rem; /* Smaller font size for mobile */
+    }
+  }
