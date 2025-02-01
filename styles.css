@@ -156,11 +156,11 @@ body {
     }
   
     .umbrella-couple img {
-      width: 120px; /* Smaller image for mobile */
+      width: 200px; /* Smaller image for mobile */
     }
   
     .text-left,
     .text-right {
-      font-size: 1.2rem; /* Smaller font size for mobile */
+      font-size: 1.8rem; /* Smaller font size for mobile */
     }
   }
