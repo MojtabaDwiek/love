@@ -9,17 +9,18 @@ const togetherDate = new Date('2024-12-29');
 
 function updateCounter() {
   const now = new Date();
-  const diff = now - togetherDate; // Calculate time remaining
+  const diff = now - togetherDate; // Calculate time remaining (future date)
 
   const days = Math.floor(diff / (1000 * 60 * 60 * 24));
   const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
   const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
   const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-  daysElement.textContent = days;
-  hoursElement.textContent = hours;
-  minutesElement.textContent = minutes;
-  secondsElement.textContent = seconds;
+  // Zero-padding for consistent formatting
+  daysElement.textContent = String(days).padStart(2, '0');
+  hoursElement.textContent = String(hours).padStart(2, '0');
+  minutesElement.textContent = String(minutes).padStart(2, '0');
+  secondsElement.textContent = String(seconds).padStart(2, '0');
 }
 
 setInterval(updateCounter, 1000);
@@ -34,15 +35,8 @@ function createRain() {
   rainDrop.classList.add('rain-drop');
   rainDrop.style.animationDuration = `${Math.random() * 1 + 2}s`; // Faster raindrops (2-3 seconds)
 
-  // Randomly decide whether to create a raindrop over the image or the rest of the screen
-  if (Math.random() < 0.5) {
-    // Raindrop over the image
-    const umbrellaRect = umbrellaImage.getBoundingClientRect();
-    rainDrop.style.left = `${umbrellaRect.left + Math.random() * umbrellaRect.width}px`;
-  } else {
-    // Raindrop over the rest of the screen
-    rainDrop.style.left = `${Math.random() * 100}%`;
-  }
+  // Randomly position raindrops across the screen
+  rainDrop.style.left = `${Math.random() * 100}%`;
 
   rainContainer.appendChild(rainDrop);
 
@@ -88,5 +82,5 @@ function createSplash(x, y) {
   });
 }
 
-// Increase the number of raindrops
-setInterval(createRain, 50); // Create a new raindrop every 50ms (faster rain)
+// Adjust the frequency of raindrop creation for a lighter rain effect
+setInterval(createRain, 200); // Create a new raindrop every 200ms

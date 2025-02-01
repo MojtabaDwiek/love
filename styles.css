@@ -64,7 +64,7 @@ body {
     height: 20px; /* Shorter raindrop */
     background: linear-gradient(transparent, rgba(173, 216, 230, 0.8)); /* Light blue gradient */
     border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; /* Teardrop shape */
-    animation: drop 3s linear infinite; /* Slow down the rain */
+    animation: drop 4s linear infinite; /* Slow down the rain */
     transform-origin: bottom; /* Rotate from the bottom */
   }
   
@@ -101,7 +101,7 @@ body {
   /* Umbrella Couple Image */
   .umbrella-couple {
     position: absolute;
-    bottom: 100px; /* Adjust as needed */
+    bottom: 50px; /* Push further down */
     left: 50%;
     transform: translateX(-50%);
     z-index: 2;
@@ -112,7 +112,7 @@ body {
   }
   
   .umbrella-couple img {
-    width: 150px; /* Smaller image for mobile */
+    width: 100px; /* Smaller image for mobile */
     height: auto;
     display: block; /* Ensure the image is displayed */
     border-radius: 20%; /* Slightly rounded corners */
@@ -124,9 +124,10 @@ body {
   .text-right {
     position: relative;
     font-family: 'Great Vibes', cursive; /* Love-themed font */
-    font-size: 1.5rem; /* Smaller font size for mobile */
+    font-size: 1.2rem; /* Smaller font size for mobile */
     color: white;
     text-align: center; /* Center text on mobile */
+    margin-top: 10px; /* Add space between text and image */
   }
   
   /* Glow Effect for Specific Words */
@@ -151,16 +152,17 @@ body {
     }
   
     .umbrella-couple {
-      flex-direction: column; /* Stack text and image vertically */
+      bottom: 30px; /* Push further down on mobile */
       gap: 5px; /* Reduce gap for mobile */
     }
   
     .umbrella-couple img {
-      width: 120px; /* Smaller image for mobile */
+      width: 80px; /* Smaller image for mobile */
     }
   
     .text-left,
     .text-right {
-      font-size: 1.2rem; /* Smaller font size for mobile */
+      font-size: 1rem; /* Smaller font size for mobile */
+      margin-top: 5px; /* Reduce space between text and image */
     }
   }
