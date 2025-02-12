@@ -33,7 +33,7 @@ const umbrellaImage = document.querySelector('.umbrella-couple img');
 function createRain() {
   const rainDrop = document.createElement('div');
   rainDrop.classList.add('rain-drop');
-  rainDrop.style.animationDuration = `${Math.random() * 1 + 2}s`; // Faster raindrops (2-3 seconds)
+  rainDrop.style.animationDuration = `${Math.random() * 2 + 3}s`; // Faster raindrops (2-3 seconds)
 
   // Randomly position raindrops across the screen
   rainDrop.style.left = `${Math.random() * 100}%`;
@@ -83,4 +83,4 @@ function createSplash(x, y) {
 }
 
 // Adjust the frequency of raindrop creation for a lighter rain effect
-setInterval(createRain, 200); // Create a new raindrop every 200ms
+setInterval(createRain, 1000); // Create a new raindrop every 200ms
