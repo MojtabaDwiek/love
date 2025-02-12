@@ -157,12 +157,12 @@ body {
     }
   
     .umbrella-couple img {
-      width: 80px; /* Smaller image for mobile */
+      width: 160px; /* Smaller image for mobile */
     }
   
     .text-left,
     .text-right {
-      font-size: 1rem; /* Smaller font size for mobile */
+      font-size: 2.5rem; /* Smaller font size for mobile */
       margin-top: 5px; /* Reduce space between text and image */
     }
   }
