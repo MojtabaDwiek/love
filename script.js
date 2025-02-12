@@ -30,27 +30,49 @@ updateCounter();
 const rainContainer = document.querySelector('.rain');
 const umbrellaImage = document.querySelector('.umbrella-couple img');
 
+// Function to create raindrops and check for collisions
 function createRain() {
   const rainDrop = document.createElement('div');
   rainDrop.classList.add('rain-drop');
-  rainDrop.style.animationDuration = `${Math.random() * 2 + 3}s`; // Faster raindrops (2-3 seconds)
+  rainDrop.style.animationDuration = `${Math.random() * 2 + 3}s`; // Raindrop animation duration (3-5 seconds)
 
-  // Randomly position raindrops across the screen
-  rainDrop.style.left = `${Math.random() * 60+20}%`;
+  // Recalculate umbrella position every time
+  const umbrellaRect = umbrellaImage.getBoundingClientRect();
+
+  // Randomly position raindrops, creating rain all over the screen but more above the umbrella
+  const umbrellaLeft = umbrellaRect.left;
+  const umbrellaWidth = umbrellaRect.width;
+  const umbrellaRight = umbrellaRect.right;
+  const umbrellaTop = umbrellaRect.top;
+  const screenWidth = window.innerWidth;
+  
+  // More raindrops above the umbrella and random across the screen
+  let rainDropLeft, rainDropTop;
+  if (Math.random() < 0.7) {
+    // 70% chance the raindrop will fall near the umbrella
+    rainDropLeft = Math.random() * (umbrellaWidth + 100) + (umbrellaLeft - 50); // Spread 100px left and right of umbrella
+    rainDropTop = -20; // Start just above the screen
+  } else {
+    // 30% chance it will fall randomly anywhere on the screen
+    rainDropLeft = Math.random() * screenWidth; // Random position across the entire screen
+    rainDropTop = -20; // Start just above the screen
+  }
+
+  rainDrop.style.left = `${rainDropLeft}px`; // Position raindrop around the umbrella
+  rainDrop.style.top = `${rainDropTop}px`; // Start just above the visible area
 
   rainContainer.appendChild(rainDrop);
 
-  // Track raindrop position and check for collisions
+  // Track raindrop position and check for collisions with the umbrella
   function checkCollision() {
-    const umbrellaRect = umbrellaImage.getBoundingClientRect();
     const rainDropRect = rainDrop.getBoundingClientRect();
 
-    // Check if raindrop is within the umbrella's bounds
+    // Check if the raindrop is within the umbrella's bounds
     if (
-      rainDropRect.bottom >= umbrellaRect.top &&
+      rainDropRect.bottom >= umbrellaTop &&
       rainDropRect.top <= umbrellaRect.bottom &&
-      rainDropRect.left >= umbrellaRect.left &&
-      rainDropRect.right <= umbrellaRect.right
+      rainDropRect.left >= umbrellaLeft &&
+      rainDropRect.right <= umbrellaRight
     ) {
       // Raindrop hits the umbrella
       createSplash(rainDropRect.left, umbrellaRect.top); // Create splash effect
@@ -68,7 +90,7 @@ function createRain() {
   requestAnimationFrame(checkCollision);
 }
 
-// Create splash effect
+// Create splash effect when raindrop hits umbrella
 function createSplash(x, y) {
   const splash = document.createElement('div');
   splash.classList.add('rain-splash');
@@ -76,11 +98,11 @@ function createSplash(x, y) {
   splash.style.top = `${y}px`;
   rainContainer.appendChild(splash);
 
-  // Remove splash after animation
+  // Remove splash after animation ends
   splash.addEventListener('animationend', () => {
     splash.remove();
   });
 }
 
-// Adjust the frequency of raindrop creation for a lighter rain effect
-setInterval(createRain, 3000); // Create a new raindrop every 200ms
+// Adjust the frequency of raindrop creation for a stable, continuous rain effect
+setInterval(createRain, 150); // Create a new raindrop every 150ms for a more continuous effect

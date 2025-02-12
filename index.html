@@ -33,11 +33,30 @@
     </div>
   </div>
 
-  <!-- Add Music Player (Autoplay) -->
-  <audio autoplay loop>
+  <!-- Add Music Player (Initially muted, autoplay) -->
+  <audio id="background-music" autoplay loop muted>
     <source src="music/love-song.mp3" type="audio/mp3">
     Your browser does not support the audio element.
   </audio>
+
+  <!-- Script to unmute after user interaction -->
+  <script>
+    // Wait for any user interaction to unmute and start the music
+    document.body.addEventListener('click', function() {
+      const audio = document.getElementById('background-music');
+      audio.muted = false; // Unmute the audio after the user clicks
+      audio.play(); // Ensure it starts playing after unmuting
+    });
+
+    // Optional: You can also listen for keyboard events (e.g., spacebar or enter key) to trigger unmuting
+    document.body.addEventListener('keydown', function(e) {
+      if (e.key === " " || e.key === "Enter") {
+        const audio = document.getElementById('background-music');
+        audio.muted = false; // Unmute the audio when user presses space or enter
+        audio.play(); // Ensure it starts playing after unmuting
+      }
+    });
+  </script>
 
   <script src="script.js"></script>
 </body>
