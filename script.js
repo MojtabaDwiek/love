@@ -105,4 +105,4 @@ function createSplash(x, y) {
 }
 
 // Adjust the frequency of raindrop creation for a stable, continuous rain effect
-setInterval(createRain, 150); // Create a new raindrop every 150ms for a more continuous effect
+setInterval(createRain, 1000); // Create a new raindrop every 150ms for a more continuous effect
